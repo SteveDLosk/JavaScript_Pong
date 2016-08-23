@@ -97,7 +97,7 @@ function DrawCanvas()
 {
     canvasContext.fillStyle = "#000";
     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-    canvasContext.strokeStyle = "fff";
+    canvasContext.strokeStyle = "#fff";
     canvasContext.moveTo(canvas.width / 2, 0);
     canvasContext.lineTo(canvas.width / 2, canvas.height);
     canvasContext.stroke();
