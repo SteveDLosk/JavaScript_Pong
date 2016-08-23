@@ -34,7 +34,7 @@ function Paddle(side)
     // methods
     this.Draw = function ()
     {
-        this.update();
+        this.Update();
         var context = canvas.getContext('2d');
         context.fillStyle = this.color;
         context.fillRect(this.xPos, this.pos, this.width, this.length);
@@ -105,9 +105,11 @@ function DrawCanvas()
 function DrawEverything ()
 {
     DrawCanvas();
+    console.log("Drew canvas");
     paddle1.Draw();
     paddle2.Draw();
     ball.Draw();
+    console.log("Drew ball");
 }
 
 function Main()
