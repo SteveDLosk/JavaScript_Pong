@@ -11,14 +11,14 @@ canvas.length = 800;
 canvas.color = "#000";
 
 // instantiate paddles and ball
-var paddle1 = new Paddle('left');
-var paddle2 = new Paddle('right');
+var paddle1 = new Paddle("left");
+var paddle2 = new Paddle("right");
 var ball = new Ball(canvas.length / 2, canvas.height / 2, 10, '#ccf');
 
 function Paddle(side)
 {
     // properties
-    this.color = "fff";
+    this.color = "#fff";
     this.width = 12;
     this.height = 80;
     this.pos = 300; // paddle pos is the top of the paddle
@@ -37,7 +37,7 @@ function Paddle(side)
         this.Update();
         var context = canvas.getContext('2d');
         context.fillStyle = this.color;
-        context.fillRect(this.xPos, this.pos, this.width, this.length);
+        context.fillRect(this.xPos, this.pos, this.width, this.height);
     }
 
     this.Update = function()
