@@ -112,9 +112,44 @@ function DrawEverything ()
     console.log("Drew ball");
 }
 
+
+function KeyDownHandler(key) {
+    if (key.keyCode == "87")
+        paddle1.velocity = paddle1.speed * -1;
+    if (key.keyCode == "83")
+        paddle1.velocity = paddle1.speed;
+    if (key.keyCode == "38")
+        paddle2.velocity = paddle2.speed * -1;
+    if (key.keyCode == "40")
+        paddle2.velocity = paddle2.speed;
+
+
+}
+function KeyUpHandler(key) {
+    if (key.keyCode == "87")
+        paddle1.velocity = 0;
+    if (key.keyCode == "83")
+        paddle1.velocity = 0;
+    if (key.keyCode == "38")
+        paddle2.velocity = 0;
+    if (key.keyCode == "40")
+        paddle2.velocity = 0;
+
+}
+
+
 function Main()
 {
     DrawEverything();
+    //var window = document.getElementById(window);
+
+    // initialize keyboard listening
+    window.addEventListener("keydown", KeyDownHandler, false);
+    // window.addEventListener("keypress", dealWithKeyboard, false);
+    window.addEventListener("keyup", KeyUpHandler, false);
+    // set frame rate
+    var framesPerSecond = 38;
+    setInterval(DrawEverything, (1000 / framesPerSecond));
 }
 
 Main();
