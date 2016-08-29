@@ -13,7 +13,7 @@ canvas.color = "#000";
 // instantiate paddles and ball
 var paddle1 = new Paddle("left");
 var paddle2 = new Paddle("right");
-var ball = new Ball(canvas.length / 2, canvas.height / 2, 10, '#ccf');
+//var ball = new Ball(canvas.length / 2, canvas.height / 2, 10, '#ccf');
 
 function Paddle(side)
 {
@@ -56,6 +56,7 @@ function Paddle(side)
 
 function Ball(xPos, yPos, radius, color)
 {
+
     // properties
     this.xPos = xPos;
     this.yPos = yPos;
@@ -105,11 +106,10 @@ function DrawCanvas()
 function DrawEverything ()
 {
     DrawCanvas();
-    console.log("Drew canvas");
     paddle1.Draw();
     paddle2.Draw();
     ball.Draw();
-    console.log("Drew ball");
+    
 }
 
 
@@ -136,11 +136,30 @@ function KeyUpHandler(key) {
         paddle2.velocity = 0;
 
 }
+function SpawnBall(direction)
+{
+    var horizVel = Math.random();
+    var vertVel = (Math.random() * 2) - .5;
+    ball = new Ball(canvas.length / 2, canvas.height / 2, 10, '#ccf');
+    console.log(horizVel);
+    console.log(vertVel);
+    // set ball spawn horizontal direction and speed
+    if (direction == "left")
+        ball.xVel = -2.7;
+    else if (direction == "right")
+        ball.xVel = 2.7;
+    else if (horizVel < .5)
+        ball.xVel = 2.7;
+    else
+        ball.xVel = -2.7;
+    // set random vertical velocity
+    ball.yVel = vertVel;
 
+}
 
 function Main()
 {
-    DrawEverything();
+    
     //var window = document.getElementById(window);
 
     // initialize keyboard listening
@@ -150,6 +169,8 @@ function Main()
     // set frame rate
     var framesPerSecond = 38;
     setInterval(DrawEverything, (1000 / framesPerSecond));
+    SpawnBall();
+    DrawEverything();
 }
 
 Main();
