@@ -90,7 +90,18 @@ function Ball(xPos, yPos, radius, color)
         if (this.yPos - this.radius <= 0 || this.yPos + this.radius >= canvas.height)
             this.yVel *= -1;
         // horizontal rebound
-            // TODO
+        if (this.xPos - this.radius <= paddle1.width)
+        {
+            if (this.yPos - this.radius >= paddle1.pos &&
+                this.yPos + this.radius <= paddle1.pos + paddle1.height)
+                this.xVel *= -1;
+        }
+        if (this.xPos + this.radius >= canvas.width - paddle2.width)
+        {
+            if (this.yPos - this.radius >= paddle2.pos &&
+                this.yPos + this.radius <= paddle2.pos + paddle2.height)
+                this.xVel *= -1;
+        }
     }
 }
 
