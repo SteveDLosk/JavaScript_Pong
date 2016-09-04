@@ -10,6 +10,7 @@ canvas.height = 600;
 canvas.length = 800;
 canvas.color = "#000";
 
+
 // instantiate paddles and ball
 var paddle1 = new Paddle("left");
 var paddle2 = new Paddle("right");
@@ -26,6 +27,7 @@ function Paddle(side)
     this.speed = 4;  // raw speed; either direction
     this.velocity = 0;  // directional, pos is down, neg is up
     this.xPos;
+    this.score = 0;
 
     if (side == "left")
         this.xPos = 0;
@@ -94,14 +96,20 @@ function Ball(xPos, yPos, radius, color)
         {
             if (this.yPos - this.radius >= paddle1.pos &&
                 this.yPos + this.radius <= paddle1.pos + paddle1.height)
-                this.xVel *= -1;
+                this.ReboundX();
         }
         if (this.xPos + this.radius >= canvas.width - paddle2.width)
         {
             if (this.yPos - this.radius >= paddle2.pos &&
                 this.yPos + this.radius <= paddle2.pos + paddle2.height)
-                this.xVel *= -1;
+                this.ReboundX();
         }
+    }
+    this.ReboundX = function ()
+    {
+        this.xVel *= -1; //rebound
+        this.xVel *= 1.1; // speedup
+        // TODO: add rebound sound
     }
 }
 
@@ -113,7 +121,19 @@ function DrawCanvas()
     canvasContext.moveTo(canvas.width / 2, 0);
     canvasContext.lineTo(canvas.width / 2, canvas.height);
     canvasContext.stroke();
+    DrawScore();
+    
 }
+
+function DrawScore ()
+{
+    var canvas = document.getElementById("gameCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.color = "#fff";
+    ctx.fillText("Hello World", 20, 50);
+}
+
 function DrawEverything ()
 {
     DrawCanvas();
