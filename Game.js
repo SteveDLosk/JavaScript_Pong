@@ -92,13 +92,13 @@ function Ball(xPos, yPos, radius, color)
         if (this.yPos - this.radius <= 0 || this.yPos + this.radius >= canvas.height)
             this.yVel *= -1;
         // horizontal rebound
-        if (this.xPos - this.radius <= paddle1.width)
+        if (this.xPos - this.radius <= paddle1.width && this.xVel < 0)
         {
             if (this.yPos - this.radius >= paddle1.pos &&
                 this.yPos + this.radius <= paddle1.pos + paddle1.height)
                 this.ReboundX();
         }
-        if (this.xPos + this.radius >= canvas.width - paddle2.width)
+        if (this.xPos + this.radius >= canvas.width - paddle2.width && this.xVel > 0)
         {
             if (this.yPos - this.radius >= paddle2.pos &&
                 this.yPos + this.radius <= paddle2.pos + paddle2.height)
