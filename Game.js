@@ -138,12 +138,16 @@ function Score (direction)
         paddle2.score++;
         SpawnBall("right");
         console.log("Right score = " + paddle2.score); //test
+        var rs = document.getElementById("RightScore");
+        rs.innerHTML = paddle2.score;
     }
     else if (direction == "right")
     {
         paddle1.score++;
         SpawnBall("left");
         console.log("Left score = " + paddle1.score); //test
+        var ls = document.getElementById("LeftScore");
+        ls.innerHTML = paddle1.score;
     }
 }
 function DrawScore ()
