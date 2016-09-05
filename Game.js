@@ -97,12 +97,17 @@ function Ball(xPos, yPos, radius, color)
             if (this.yPos - this.radius >= paddle1.pos &&
                 this.yPos + this.radius <= paddle1.pos + paddle1.height)
                 this.ReboundX();
+            else if (this.xPos < 0)
+                Score("left");
+
         }
         if (this.xPos + this.radius >= canvas.width - paddle2.width && this.xVel > 0)
         {
             if (this.yPos - this.radius >= paddle2.pos &&
                 this.yPos + this.radius <= paddle2.pos + paddle2.height)
                 this.ReboundX();
+            else if (this.xPos > canvas.length)
+                Score("right");
         }
     }
     this.ReboundX = function ()
@@ -126,7 +131,21 @@ function DrawCanvas()
     DrawScore();
     
 }
-
+function Score (direction)
+{
+    if (direction == "left")
+    {
+        paddle2.score++;
+        SpawnBall("right");
+        console.log("Right score = " + paddle2.score); //test
+    }
+    else if (direction == "right")
+    {
+        paddle1.score++;
+        SpawnBall("left");
+        console.log("Left score = " + paddle1.score); //test
+    }
+}
 function DrawScore ()
 {
     var canvas = document.getElementById("gameCanvas");
