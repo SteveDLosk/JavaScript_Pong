@@ -109,7 +109,9 @@ function Ball(xPos, yPos, radius, color)
     {
         this.xVel *= -1; //rebound
         this.xVel *= 1.1; // speedup
-        // TODO: add rebound sound
+        document.getElementById("paddle collision").load();
+        document.getElementById("paddle collision").play();
+
     }
 }
 
