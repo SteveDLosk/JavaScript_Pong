@@ -227,6 +227,8 @@ function Main()
     setInterval(DrawEverything, (1000 / framesPerSecond));
     SpawnBall();
     DrawEverything();
+    document.getElementById("background music").load();
+    document.getElementById("background music").play();
 }
 
 Main();
